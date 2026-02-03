@@ -1,0 +1,475 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+body::before {
+    content: 'fixed;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+    animation: rotate 30s linear infinite;
+    z-index: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)gba(59, 130, 246, 0.1) 0%, transparent 70%);
+    animation: rotate 30s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.container {
+    margin: auto;
+    width: 100%;
+    max-width: 480px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Wider container for registration page */
+body:has(.form-header h1:contains("Create Account")) .container,
+.register-container {
+    max-width: 600px;
+}
+
+.form-wrapper {
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4), 0 0 100px rgba(59, 130, 246, 0.1);
+    padding: 50px 45px;
+    animation: slideUp 0.6s ease-out;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.form-header h1 {
+    color: #0f172a;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+    background: linear-gradient(135deg, #0f172a 0%, #1e40af 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.form-header p {
+    color: #64748b;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: -0.2px;
+}
+
+.auth-form {
+ 
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.form-row .form-group {
+    margin-bottom: 0;
+}   display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    color: #1e293b;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    letter-spacing: -0.1px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 14px 18px;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    outline: none;
+    background: #f8fafc;
+    font-family: 'Inter', sans-serif;
+}
+
+.form-group input:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05);
+    background: #ffffff;
+    transform: translateY(-1px);
+}
+
+.form-group input::placeholder {
+    color: #94a3b8;
+    font-weight: 400;
+}
+
+/* Password Strength Indicator */
+.password-strength {
+    margin-top: 12px;
+}
+
+.strength-bars {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 8px;
+}
+
+.strength-bar {
+    height: 4px;
+    flex: 1;
+    background: #e2e8f0;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.strength-bar.active {
+    background: #10b981;
+}
+
+.strength-bar.active.weak {
+    background: #ef4444;
+}
+
+.strength-bar.active.fair {
+    background: #f59e0b;
+}
+
+.strength-bar.active.good {
+    background: #3b82f6;
+}
+
+.strength-bar.active.strong {
+    background: #10b981;
+}
+
+.strength-text {
+    font-size: 13px;
+    color: #64748b;
+    font-weight: 500;
+}
+
+#strength-label {
+    font-weight: 600;
+    color: #64748b;
+}
+
+#strength-label.weak {
+    color: #ef4444;
+}
+
+#strength-label.fair {
+    color: #f59e0b;
+}
+
+#strength-label.good {
+    color: #3b82f6;
+}
+
+#strength-label.strong {
+    color: #10b981;
+}
+
+/* Password Match Indicator */
+.password-match {
+    margin-top: 12px;
+    min-height: 20px;
+}
+
+#match-text {
+    font-size: 13px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+#match-text.match {
+    color: #10b981;
+}
+
+#match-text.no-match {
+    color: #ef4444;
+}
+
+#match-text::before {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+}
+
+#match-text.match::before {
+    content: '✓';
+    background: #10b981;
+    color: white;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#match-text.no-match::before {
+    content: '✕';
+    background: #ef4444;
+    color: white;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+    font-size: 14px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: #475569;
+    font-weight: 500;
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+    cursor: pointer;
+    accent-color: #3b82f6;
+}
+
+.checkbox-label a {
+    color: #3b82f6;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.checkbox-label a:hover {
+    color: #1e40af;
+}
+
+.forgot-link {
+    color: #3b82f6;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.forgot-link:hover {
+    color: #1e40af;
+}
+
+.btn-primary,
+.btn-secondary {
+    width: 100%;
+    padding: 16px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: none;
+    outline: none;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: -0.2px;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+    color: white;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn-primary:hover::before {
+    left: 100%;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 24px rgba(59, 130, 246, 0.4);
+}
+
+.btn-primary:active {
+    transform: translateY(-1px);
+}
+
+.form-divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 24px 0;
+    color: #94a3b8;
+}
+
+.form-divider::before,
+.form-divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.form-divider span {
+    padding: 0 20px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.btn-secondary {
+    background: #ffffff;
+    color: #1e293b;
+    border: 2px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 30px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.btn-secondary:hover {
+    background: #f8fafc;
+    border-color: #cbd5e0;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.form-footer {
+    text-align: center;
+    color: #64748b;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.form-footer a {
+    color: #3b82f6;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.form-footer a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;640px) {
+    body:has(.form-header h1:contains("Create Account")) .container,
+    .register-container {
+        max-width: 480px;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .form-row .form-group {
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #3b82f6;
+    transition: width 0.3s ease;
+}
+
+.form-footer a:hover::after {
+    width: 100%;
+}
+
+.form-footer a:hover {
+    color: #1e40af;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .form-wrapper {
+        padding: 40px 30px;
+    }
+    
+    .form-header h1 {
+        font-size: 26px;
+    }
+    
+    .form-options {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    
+    body::before {
+        animation: rotate 20s linear infinite;
+    }
+}
