@@ -18,7 +18,8 @@ body {
 }
 
 body::before {
-    content: 'fixed;
+    content: '';
+    position: fixed;
     width: 200%;
     height: 200%;
     background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
@@ -26,8 +27,7 @@ body::before {
     z-index: 0;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%)gba(59, 130, 246, 0.1) 0%, transparent 70%);
-    animation: rotate 30s linear infinite;
+    transform: translate(-50%, -50%);
 }
 
 @keyframes rotate {
@@ -99,7 +99,9 @@ body:has(.form-header h1:contains("Create Account")) .container,
 }
 
 .auth-form {
- 
+    display: flex;
+    flex-direction: column;
+}
 
 .form-row {
     display: grid;
@@ -110,8 +112,6 @@ body:has(.form-header h1:contains("Create Account")) .container,
 
 .form-row .form-group {
     margin-bottom: 0;
-}   display: flex;
-    flex-direction: column;
 }
 
 .form-group {
@@ -421,23 +421,7 @@ body:has(.form-header h1:contains("Create Account")) .container,
 .form-footer a::after {
     content: '';
     position: absolute;
-    bottom: -2px;640px) {
-    body:has(.form-header h1:contains("Create Account")) .container,
-    .register-container {
-        max-width: 480px;
-    }
-    
-    .form-row {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-    
-    .form-row .form-group {
-        margin-bottom: 0;
-    }
-}
-
-@media (max-width: 
+    bottom: -2px;
     left: 0;
     width: 0;
     height: 2px;
@@ -454,6 +438,22 @@ body:has(.form-header h1:contains("Create Account")) .container,
 }
 
 /* Responsive Design */
+@media (max-width: 640px) {
+    body:has(.form-header h1:contains("Create Account")) .container,
+    .register-container {
+        max-width: 480px;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .form-row .form-group {
+        margin-bottom: 0;
+    }
+}
+
 @media (max-width: 480px) {
     .form-wrapper {
         padding: 40px 30px;
